@@ -1,0 +1,4 @@
+snowflake-snowpark-python[pandas]
+jupyter
+python-dotenv
+numpy

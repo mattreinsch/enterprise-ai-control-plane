@@ -1,5 +1,9 @@
 # 🏢 Enterprise AI Control Plane (V1)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python Version](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
+[![Snowflake Native](https://img.shields.io/badge/Snowflake-Native-blue.svg)](https://www.snowflake.com/en/)
+
 **A Snowflake-native orchestration layer that unifies agents, models, governance, observability, and decision systems into a single coordinated AI operating layer.**
 
 ---
@@ -7,6 +11,59 @@
 This Control Plane acts as the **brain** of your enterprise AI ecosystem — orchestrating **Atlas (MLOps)**, the **Snowflake Intelligence Agent (reasoning & action)**, and **Governance Autopilot (PII detection, policies, tagging)**.
 
 Designed as both a **reference architecture** and a **production-ready foundation** for enterprise AI systems.
+
+---
+
+## ✨ What's New (v0.1.0)
+
+This iteration transforms the Control Plane from a conceptual framework into a runnable platform. Key additions include:
+
+*   **Workflow & Policy Engines:** Core logic for executing workflows and evaluating policies.
+*   **Run Logs:** A structured model and writer for capturing every action.
+*   **Connectors:** A dedicated module for third-party integrations, starting with a stub for Apache Atlas.
+*   **Quickstart Guide:** Reproducible setup instructions to get the demo running in minutes.
+*   **Demo Notebook:** An end-to-end example showcasing a practical use case.
+
+See the [CHANGELOG.md](CHANGELOG.md) for more details.
+
+---
+
+## 🚀 Quickstart (5-Minute Setup)
+
+Get the Control Plane running locally with Snowflake.
+
+### 1. Prerequisites
+*   Python 3.9+
+*   A Snowflake account
+
+### 2. Clone the Repository
+```bash
+git clone https://github.com/your-username/enterprise-ai-control-plane.git
+cd enterprise-ai-control-plane
+```
+
+### 3. Set Up Environment
+Install the required Python packages:
+```bash
+pip install -r requirements.txt
+```
+Create a `.env` file from the example and fill in your Snowflake credentials:
+```bash
+cp .env.example .env
+# Now, edit .env with your details
+```
+
+### 4. Set Up Snowflake Database
+Connect to your Snowflake account and run the setup scripts in the `sql/` directory in the following order:
+1.  `01_create_schemas.sql`
+2.  `02_create_tables.sql`
+3.  `03_seed_policies.sql`
+
+### 5. Run the Demo Notebook
+Launch Jupyter and open the demo notebook to see the Control Plane in action:
+```bash
+jupyter notebook notebooks/control_plane_demo.ipynb
+```
 
 ---
 
@@ -92,24 +149,39 @@ graph TD
 ```text
 enterprise-ai-control-plane/
 │
-├── src/control_plane/
-│   ├── config.py          # Global configuration, environment flags
-│   ├── registry.py        # Agent + workflow registry (in-memory or DB-backed)
-│   ├── policies.py        # Create & evaluate enterprise policies
-│   ├── workflows.py       # Core orchestration logic
-│   ├── agents.py          # Interfaces to Atlas, Intelligence Agent, etc.
-│   └── observability.py   # Run logs, metrics, and SLOs
-│
-├── sql/
-│   ├── create_schemas.sql
-│   ├── run_log_tables.sql
-│   └── example_policies.sql
+├── .env.example
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── requirements.txt
 │
 ├── notebooks/
-│   └── drift_demo.ipynb   # Complete end-to-end drift management example
+│   └── control_plane_demo.ipynb
 │
-├── LICENSE
-└── README.md
+├── sql/
+│   ├── 01_create_schemas.sql
+│   ├── 02_create_tables.sql
+│   └── 03_seed_policies.sql
+│
+└── src/
+    └── control_plane/
+        ├── __init__.py
+        ├── agents.py
+        ├── config.py
+        ├── models.py
+        ├── observability.py
+        ├── policies.py
+        ├── policy_engine.py
+        ├── registry.py
+        ├── run_log.py
+        ├── utils.py
+        ├── workflows.py
+        ├── workflow_engine.py
+        │
+        └── connectors/
+            ├── __init__.py
+            └── atlas_connector.py
 ```
 
 ---
