@@ -1,4 +1,4 @@
-# 🏢 Enterprise AI Control Plane (V1)
+# 🏢 Enterprise AI Control Plane
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
